@@ -2,11 +2,21 @@
 .build/
 *.dex
 *.apk
+*.aab
 *.class
+*.idsig
 
 # Android SDK cached binaries & keystores
 .android_sdk/
 *.keystore
+*.jks
+*.pem
+*.key
+
+# Environment & Sensitive configs
+.env
+*.env
+.env.*
 
 # Python cache
 __pycache__/
@@ -15,4 +25,3 @@ __pycache__/
 # Environment & OS files
 .DS_Store
 Thumbs.db
-*.idsig
