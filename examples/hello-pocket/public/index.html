@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#09090b] text-zinc-100">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Hello Pocket • Mobile Workstation Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #09090b;
+      color: #fafafa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      background: #121215;
+      border: 1px solid #27272a;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 14px;
+    }
+    p {
+      color: #a1a1aa;
+      font-size: 13.5px;
+      line-height: 1.5;
+      margin-top: 8px;
+    }
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #1f1f23;
+      font-size: 13px;
+    }
+    .metric-row:last-child {
+      border-bottom: none;
+    }
+    .metric-label {
+      color: #71717a;
+    }
+    .metric-val {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #e4e4e7;
+      font-size: 12px;
+    }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      background: #fafafa;
+      color: #09090b;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: opacity 0.15s ease;
+    }
+    button:active {
+      opacity: 0.85;
+    }
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #52525b;
+      margin-top: 24px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="badge">
+      <span class="status-dot"></span>
+      Native ARM64 • Standalone
+    </div>
+    <h1>Hello, Pocket Developer</h1>
+    <p>This APK was compiled directly on an Android smartphone using pure Dalvik bytecode tooling without Gradle or Android Studio.</p>
+
+    <div class="card">
+      <div class="metric-row">
+        <span class="metric-label">Compiler Pipeline</span>
+        <span class="metric-val">javac + dx + aapt</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Build Target</span>
+        <span class="metric-val">ARM64 Dalvik DEX</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Screen Resolution</span>
+        <span class="metric-val" id="screen-res">-</span>
+      </div>
+      <div class="metric-row">
+        <span class="metric-label">Native Bridge</span>
+        <span class="metric-val" id="bridge-status">Checking...</span>
+      </div>
+    </div>
+
+    <button type="button" onclick="triggerToast()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+      Trigger Native Android Toast
+    </button>
+  </div>
+
+  <div class="footer">
+    The Pocket Developer • github.com/dahalsandesh/pocket-developer
+  </div>
+
+  <script>
+    document.getElementById('screen-res').textContent = window.screen.width + ' × ' + window.screen.height + ' (' + window.devicePixelRatio + 'x)';
+    
+    if (window.AndroidBridge) {
+      document.getElementById('bridge-status').textContent = 'Connected (Active)';
+      document.getElementById('bridge-status').style.color = '#10b981';
+    } else {
+      document.getElementById('bridge-status').textContent = 'Browser Mode (Simulated)';
+    }
+
+    function triggerToast() {
+      if (window.AndroidBridge && window.AndroidBridge.showToast) {
+        window.AndroidBridge.showToast("⚡ Hello from the Pocket Developer Native Bridge!");
+      } else {
+        alert("⚡ Hello from the Pocket Developer! (Running in browser)");
+      }
+    }
+  </script>
+</body>
+</html>

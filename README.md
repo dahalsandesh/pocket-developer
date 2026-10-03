@@ -70,13 +70,14 @@ Or follow the manual step-by-step instructions in [**`docs/01-linux-foundation.m
 
 ---
 
-## 🛠️ Reusable Templates & Scripts
+## 🛠️ Reusable Templates & Examples
 
-This repository includes battle-tested templates you can drop directly into your projects:
+This repository includes battle-tested starter projects and templates you can drop directly into your work:
 
-1. **[`setup.sh`](setup.sh):** Automated phone workstation bootstrap script.
-2. **[`templates/build_apk.sh`](templates/build_apk.sh):** Complete 5-step native Android APK compiler pipeline requiring zero Gradle or Android Studio.
-3. **[`templates/server.py`](templates/server.py):** Multi-threaded local Python development server configured for mobile LAN testing.
+1. **[`examples/hello-pocket/`](examples/hello-pocket/):** Self-contained runnable minimal Android APK project with dark-mode dashboard and native JavaScript bridge. Run `bash build.sh` to compile your first APK in 5 seconds!
+2. **[`setup.sh`](setup.sh):** Smart dual-mode bootstrap script (provisions Termux environment on host, or installs complete Android toolchain inside Ubuntu PRoot).
+3. **[`templates/build_apk.sh`](templates/build_apk.sh):** Complete 5-step native Android APK compiler pipeline requiring zero Gradle or Android Studio.
+4. **[`templates/server.py`](templates/server.py):** Multi-threaded local Python development server configured for mobile LAN testing.
 
 ---
 
@@ -106,7 +107,8 @@ Need proof of what a smartphone paired with an AI agent can build? Look no furth
 
 ## 🤝 Contributing & Community
 
-Whether you've built an IoT dashboard, compiled a game engine, audited a network, or created an app entirely on your phone:
+We welcome contributions from developers worldwide!
+- Read our [**`CONTRIBUTING.md`**](CONTRIBUTING.md) guide for pull request standards.
 - Submit a pull request to add your project to [**`docs/06-showcase.md`**](docs/06-showcase.md).
 - Help optimize scripts or port tools for other PRoot distributions (Debian, Alpine, Arch).
 

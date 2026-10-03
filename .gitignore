@@ -1,0 +1,18 @@
+# Build artifacts
+.build/
+*.dex
+*.apk
+*.class
+
+# Android SDK cached binaries & keystores
+.android_sdk/
+*.keystore
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment & OS files
+.DS_Store
+Thumbs.db
+*.idsig

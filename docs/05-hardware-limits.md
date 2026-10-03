@@ -11,14 +11,19 @@ Modern Android skins (Xiaomi HyperOS / MIUI, Samsung OneUI, OnePlus OxygenOS, Op
 If not configured, Android will kill Termux after 10–15 minutes of inactivity.
 
 ### Step 1: Whitelist Termux in Battery Settings
-1. Open phone **Settings → Apps → Manage Apps → Termux**.
-2. Find **Battery Saver** and change it from *MIUI Battery Saver (Recommended)* to **No Restrictions**.
-3. Enable **Autostart** if available.
+- **Xiaomi HyperOS / MIUI:**  
+  Open **Settings → Apps → Manage Apps → Termux → Battery Saver** → Select **No Restrictions**. Also toggle on **Autostart**.
+- **Samsung OneUI:**  
+  Open **Settings → Battery → Background usage limits → Never sleeping apps** → Tap `+` and add **Termux**.
+- **Google Pixel / Stock Android (AOSP):**  
+  Open **Settings → Apps → Termux → App battery usage** → Select **Unrestricted**.
+- **OnePlus / Realme / Oppo:**  
+  Open **Settings → Apps → App Management → Termux → Battery Usage** → Enable **Allow background activity** and **Allow auto-launch**.
 
 ### Step 2: Lock Termux in the App Switcher
 1. Open the Android Multitasking / Recent Apps view.
-2. Long-press on the **Termux** preview card.
-3. Tap the **Lock 🔒** icon. This prevents the OS from clearing Termux when you tap "Clear All".
+2. Long-press on the **Termux** preview card (or tap the app icon).
+3. Tap the **Lock 🔒** icon. This prevents the OS from killing Termux when you tap "Clear All".
 
 ### Step 3: Enable Termux Wake Lock
 Inside Termux, pull down the Android notification shade and tap **"Acquire Wake Lock"**, or run:

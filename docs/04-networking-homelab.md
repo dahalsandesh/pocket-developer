@@ -98,6 +98,32 @@ flowchart LR
 ### Method 2: Localhost Browser Pairing
 Run your server on the phone:
 ```bash
-python3 server.py  # listening on 0.0.0.0:8090
+python3 templates/server.py 8080  # listening on 0.0.0.0:8080
 ```
-Open `http://<phone-ip>:8090` in your laptop browser to preview mobile UIs and inspect elements with Chrome DevTools on a big screen!
+Open `http://<phone-ip>:8080` in your laptop browser to preview mobile UIs and inspect elements with Chrome DevTools on a big screen!
+
+---
+
+## 5. The "Zero-Router" Hotspot Trick (Develop In The Wild)
+
+What if you're traveling on a train, plane, in a cafe with captive portal Wi-Fi, or camping without a home router or internet?
+
+You can still link your laptop and phone seamlessly using Android's built-in **Personal Hotspot**:
+
+```mermaid
+flowchart LR
+    Phone["Android Hotspot Enabled\n(Fixed Gateway: 192.168.43.1)"] === "Direct Wi-Fi Broadcast\n(Zero External Router / Zero Data Used)" ===> Laptop["Laptop Wi-Fi Connected\n(SSH & Browser to 192.168.43.1)"]
+```
+
+### How to Use It:
+1. On your phone, turn on **Personal Hotspot** (cellular mobile data can even be turned **OFF**; the Wi-Fi broadcast will still work!).
+2. Connect your laptop to your phone's hotspot Wi-Fi network.
+3. Android universally assigns itself the gateway IP address:
+   `192.168.43.1`
+4. From your laptop:
+   - **Terminal SSH:** `ssh -p 8022 192.168.43.1`
+   - **Web Browser:** `http://192.168.43.1:8080`
+   - **VS Code Remote:** Target `192.168.43.1:8022`
+
+This gives you a completely private, high-speed (300Mbps+ local Wi-Fi), zero-latency ad-hoc developer workstation anywhere on Earth without consuming a single megabyte of mobile data!
+
